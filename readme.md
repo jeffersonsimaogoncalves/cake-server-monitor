@@ -57,7 +57,6 @@ by default CakeServerMonitor checks following stats:
 + Disk Space
 + MySql Process
 + Nginx Process
-+ Php5Fpm Process
 
 Under the hood, each checker is actually a class under JeffersonSimaoGoncalves
 namespace. You can overwrite what checkers to run via the 
@@ -70,7 +69,6 @@ Configure::write(
         'disk_space' => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\DiskSpace',
         'mysql' => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\MySql',
         'nginx' => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\Nginx',
-        'php5fpm' => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\Php5Fpm',
     ]
 );
 ```
