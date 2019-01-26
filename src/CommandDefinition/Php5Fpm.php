@@ -6,10 +6,21 @@
  * Time: 8:24 PM
  */
 
-namespace WatchOwl\CakeServerMonitor\CommandDefinition;
+namespace JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition;
 
-
-class Php5Fpm extends CommandDefinition
+/**
+ * Class Php5Fpm
+ *
+ * Date: 26/01/2019 10:28
+ *
+ * Project: cakephp-server-monitor
+ *
+ * @author Jefferson Simão Gonçalves <gerson.simao.92@gmail.com>
+ *
+ * @package JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition
+ */
+class Php5Fpm
+    extends CommandDefinition
 {
     public function resolve($output)
     {

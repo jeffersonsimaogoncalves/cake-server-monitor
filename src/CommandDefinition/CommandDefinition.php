@@ -7,12 +7,24 @@
  * Time: 7:32 PM
  */
 
-namespace WatchOwl\CakeServerMonitor\CommandDefinition;
+namespace JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition;
 
+/**
+ * Class CommandDefinition
+ *
+ * Date: 26/01/2019 10:28
+ *
+ * Project: cakephp-server-monitor
+ *
+ * @author Jefferson Simão Gonçalves <gerson.simao.92@gmail.com>
+ *
+ * @package JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition
+ */
 abstract class CommandDefinition
 {
     /**
      * @param string $output
+     *
      * @return bool resolved result
      */
     public abstract function resolve($output);

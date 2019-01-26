@@ -7,17 +7,28 @@
  * Time: 7:32 PM
  */
 
-namespace WatchOwl\CakeServerMonitor\Shell;
+namespace JeffersonSimaoGoncalves\CakeServerMonitor\Shell;
 
 use Cake\Console\Shell;
-
 use Cake\Core\Configure;
-use Cake\Network\Email\Email;
+use Cake\Mailer\Email;
 use Cake\Utility\Hash;
 use Cake\Validation\Validation;
-use WatchOwl\CakeServerMonitor\System\OperatingSystem;
+use JeffersonSimaoGoncalves\CakeServerMonitor\System\OperatingSystem;
 
-class MonitorShell extends Shell
+/**
+ * Class MonitorShell
+ *
+ * Date: 26/01/2019 10:29
+ *
+ * Project: cakephp-server-monitor
+ *
+ * @author Jefferson Simão Gonçalves <gerson.simao.92@gmail.com>
+ *
+ * @package JeffersonSimaoGoncalves\CakeServerMonitor\Shell
+ */
+class MonitorShell
+    extends Shell
 {
     /**
      * @var OperatingSystem
@@ -34,6 +45,9 @@ class MonitorShell extends Shell
      */
     private $email;
 
+    /**
+     * @return void
+     */
     public function initialize()
     {
         parent::initialize();
@@ -42,7 +56,7 @@ class MonitorShell extends Shell
 
         $commands = array_filter($commands);
 
-        $this->commands = array_map(function ($namespaceClassName) {
+        $this->commands = array_map(function($namespaceClassName) {
             return new $namespaceClassName();
         }, $commands);
 
@@ -51,6 +65,54 @@ class MonitorShell extends Shell
         $this->email = $this->createEmail();
     }
 
+    /**
+     * @return \Cake\Mailer\Email
+     */
+    private function createEmail()
+    {
+        $emailConfig = Configure::read('CakeServerMonitor.email');
+        $recipients = $this->extractRecipients($emailConfig);
+        $email = new Email();
+        $email->setProfile(Hash::get($emailConfig, 'profile'));
+        $email->setTo($recipients);
+        $email->setSubject(('Server Warning from Cake Server Monitor'));
+
+        return $email;
+    }
+
+    /**
+     * @param $emailConfig
+     *
+     * @return array|mixed
+     */
+    private function extractRecipients($emailConfig)
+    {
+        $recipients = Hash::get($emailConfig, 'recipients');
+
+        if (!is_array($recipients)) {
+            $recipients = [$recipients];
+        }
+
+        if (empty($recipients)) {
+            throw new \RuntimeException(
+                __('Please supply email recipient at CakeServerMonitor.email')
+            );
+        }
+
+        foreach ($recipients as $recipient) {
+            if (!Validation::email($recipient)) {
+                throw new \RuntimeException(
+                    __('Invalid email address {0} at CakeServerMonitor.email', $recipient)
+                );
+            }
+        }
+
+        return $recipients;
+    }
+
+    /**
+     * @return \Cake\Console\ConsoleOptionParser
+     */
     public function getOptionParser()
     {
         $parser = parent::getOptionParser();
@@ -59,21 +121,24 @@ class MonitorShell extends Shell
             'parser' => [
                 'description' => [
                     __('Start the server monitor'),
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $parser->addSubcommand('view', [
             'parser' => [
                 'description' => [
                     __('View the monitor stats'),
-                ]
-            ]
+                ],
+            ],
         ]);
 
         return $parser;
     }
 
+    /**
+     * @return bool|int|void|null
+     */
     public function main()
     {
         $this->out($this->OptionParser->help());
@@ -155,41 +220,5 @@ class MonitorShell extends Shell
     public function setEmail(Email $email)
     {
         $this->email = $email;
-    }
-
-    private function createEmail()
-    {
-        $emailConfig = Configure::read('CakeServerMonitor.email');
-        $recipients = $this->extractRecipients($emailConfig);
-        $email = new Email();
-        $email->setProfile(Hash::get($emailConfig, 'profile'));
-        $email->setTo($recipients);
-        $email->setSubject(('Server Warning from Cake Server Monitor'));
-        return $email;
-    }
-
-    private function extractRecipients($emailConfig)
-    {
-        $recipients = Hash::get($emailConfig, 'recipients');
-
-        if (!is_array($recipients)) {
-            $recipients = [$recipients];
-        }
-
-        if (empty($recipients)) {
-            throw new \RuntimeException(
-                __('Please supply email recipient at CakeServerMonitor.email')
-            );
-        }
-
-        foreach ($recipients as $recipient) {
-            if (!Validation::email($recipient)) {
-                throw new \RuntimeException(
-                    __('Invalid email address {0} at CakeServerMonitor.email', $recipient)
-                );
-            }
-        }
-
-        return $recipients;
     }
 }

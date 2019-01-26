@@ -8,14 +8,14 @@
  */
 
 
-namespace WatchOwl\CakeServerMonitor\Test;
+namespace JeffersonSimaoGoncalves\CakeServerMonitor\Test;
 
 use Cake\Console\ConsoleIo;
 use Cake\Core\Configure;
 use Cake\Network\Email\Email;
-use WatchOwl\CakeServerMonitor\CommandDefinition\DiskSpace;
-use WatchOwl\CakeServerMonitor\Shell\MonitorShell;
-use WatchOwl\CakeServerMonitor\System\OperatingSystem;
+use JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\DiskSpace;
+use JeffersonSimaoGoncalves\CakeServerMonitor\Shell\MonitorShell;
+use JeffersonSimaoGoncalves\CakeServerMonitor\System\OperatingSystem;
 
 class MonitorShellTest extends \PHPUnit_Framework_TestCase
 {

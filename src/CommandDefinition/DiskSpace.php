@@ -7,9 +7,21 @@
  * Time: 7:32 PM
  */
 
-namespace WatchOwl\CakeServerMonitor\CommandDefinition;
+namespace JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition;
 
-class DiskSpace extends CommandDefinition
+/**
+ * Class DiskSpace
+ *
+ * Date: 26/01/2019 10:28
+ *
+ * Project: cakephp-server-monitor
+ *
+ * @author Jefferson Simão Gonçalves <gerson.simao.92@gmail.com>
+ *
+ * @package JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition
+ */
+class DiskSpace
+    extends CommandDefinition
 {
     /**
      * @var int percentage of failed threshold
@@ -23,6 +35,7 @@ class DiskSpace extends CommandDefinition
 
     /**
      * @param string $output output after running the command
+     *
      * @return boolean fail/success
      */
     public function resolve($output)
@@ -34,6 +47,24 @@ class DiskSpace extends CommandDefinition
         }
 
         return true;
+    }
+
+    /**
+     * Extract percentage of usage from command output
+     *
+     * @param $output
+     *
+     * @return int
+     */
+    private function calCurrentUsage($output)
+    {
+        $matches = [];
+
+        if (preg_match('/(\d?\d)%/', $output, $matches)) {
+            return (int)($matches[1]);
+        }
+
+        throw new \RuntimeException('Unable to get current disk space usage');
     }
 
     /**
@@ -58,23 +89,6 @@ class DiskSpace extends CommandDefinition
     public function rawCommand()
     {
         return 'df -P .';
-    }
-
-    /**
-     * Extract percentage of usage from command output
-     *
-     * @param $output
-     * @return int
-     */
-    private function calCurrentUsage($output)
-    {
-        $matches = [];
-
-        if (preg_match('/(\d?\d)%/', $output, $matches)) {
-            return (int)($matches[1]);
-        }
-
-        throw new \RuntimeException('Unable to get current disk space usage');
     }
 
 }

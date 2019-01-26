@@ -6,9 +6,9 @@
  * Time: 8:24 PM
  */
 
-namespace WatchOwl\CakeServerMonitor\Test\CommandDefinition;
+namespace JeffersonSimaoGoncalves\CakeServerMonitor\Test\CommandDefinition;
 
-use WatchOwl\CakeServerMonitor\CommandDefinition\Php5Fpm;
+use JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\Php5Fpm;
 
 class Php5FpmTest extends \PHPUnit_Framework_TestCase
 {

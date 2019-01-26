@@ -6,9 +6,9 @@
  * Time: 8:16 PM
  */
 
-namespace WatchOwl\CakeServerMonitor\Test\CommandDefinition;
+namespace JeffersonSimaoGoncalves\CakeServerMonitor\Test\CommandDefinition;
 
-use WatchOwl\CakeServerMonitor\CommandDefinition\Nginx;
+use JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\Nginx;
 
 class NginxTest extends \PHPUnit_Framework_TestCase
 {

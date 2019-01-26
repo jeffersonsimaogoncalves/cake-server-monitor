@@ -1,21 +1,20 @@
 <?php
 
-use \Cake\Core\Configure;
+use Cake\Core\Configure;
 
-Configure::write(
-    'CakeServerMonitor.commands',
-    [
-        'disk_space' => 'WatchOwl\CakeServerMonitor\CommandDefinition\DiskSpace',
-        'mysql' => 'WatchOwl\CakeServerMonitor\CommandDefinition\MySql',
-        'nginx' => 'WatchOwl\CakeServerMonitor\CommandDefinition\Nginx',
-        'php5fpm' => 'WatchOwl\CakeServerMonitor\CommandDefinition\Php5Fpm',
-    ]
-);
+Configure::write('CakeServerMonitor.commands', [
+    'disk_space' => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\DiskSpace',
+    'mysql'      => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\MySql',
+    'nginx'      => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\Nginx',
+    'php5fpm'    => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\Php5Fpm',
+]);
 
-Configure::write(
-    'CakeServerMonitor.email',
-    [
-        'profile' => 'default',
-        'recipients' => []
-    ]
-);
+Configure::write('CakeServerMonitor.email', [
+    'profile'    => 'default',
+    'recipients' => [],
+]);
+
+// Optionally load additional queue config defaults from local app config
+if (file_exists(ROOT . DS . 'config' . DS . 'cake_server_monitor.php')) {
+    Configure::load('cake_server_monitor');
+}

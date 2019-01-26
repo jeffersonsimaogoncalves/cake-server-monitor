@@ -6,9 +6,9 @@
  * Time: 8:10 PM
  */
 
-namespace WatchOwl\CakeServerMonitor\Test\CommandDefinition;
+namespace JeffersonSimaoGoncalves\CakeServerMonitor\Test\CommandDefinition;
 
-use WatchOwl\CakeServerMonitor\CommandDefinition\MySql;
+use JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\MySql;
 
 class MySqlTest extends \PHPUnit_Framework_TestCase
 {

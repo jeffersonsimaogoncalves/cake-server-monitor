@@ -5,11 +5,11 @@ CakePHP 3 Plugin for Monitoring Server Stats
 
 + To install the CakeServerMonitor plugin, you can use composer. From your application's ROOT directory (where composer.json file is located) run the following:
 
-    ```composer require watchowl/cake-server-monitor```
+    ```composer require jeffersonsimaogoncalves/cake-server-monitor```
 
 + You will need to add the following line to your application's `config/bootstrap.php` file:
 
-    ```Plugin::load('Watchowl/CakeServerMonitor',['bootstrap' => true]);```
+    ```Plugin::load('JeffersonSimaoGoncalves/CakeServerMonitor',['bootstrap' => true]);```
 
 
 ## Notification
@@ -59,7 +59,7 @@ by default CakeServerMonitor checks following stats:
 + Nginx Process
 + Php5Fpm Process
 
-Under the hood, each checker is actually a class under WatchOwl
+Under the hood, each checker is actually a class under JeffersonSimaoGoncalves
 namespace. You can overwrite what checkers to run via the 
 *CakeServerMonitor.commands* key:
 
@@ -67,10 +67,10 @@ namespace. You can overwrite what checkers to run via the
 Configure::write(
     'CakeServerMonitor.commands',
     [
-        'disk_space' => 'WatchOwl\CakeServerMonitor\CommandDefinition\DiskSpace',
-        'mysql' => 'WatchOwl\CakeServerMonitor\CommandDefinition\MySql',
-        'nginx' => 'WatchOwl\CakeServerMonitor\CommandDefinition\Nginx',
-        'php5fpm' => 'WatchOwl\CakeServerMonitor\CommandDefinition\Php5Fpm',
+        'disk_space' => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\DiskSpace',
+        'mysql' => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\MySql',
+        'nginx' => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\Nginx',
+        'php5fpm' => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\Php5Fpm',
     ]
 );
 ```
@@ -80,7 +80,7 @@ You can remove any checkers above so it won't run.
 + **Creating your own checker**
 
 As you might have already guessed, you can create your own checker to extend CakeServerMonitor's abilities.
-To do so, creates a class extends from *WatchOwl\CakeServerMonitor\CommandDefinition\CommandDefinition* abstract 
+To do so, creates a class extends from *JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\CommandDefinition* abstract 
 class and implement its defined abstract methods.
 
 After that, add your own checker to the *CakeServerMonitor.commands* key as shown in previous section.
@@ -90,4 +90,8 @@ After that, add your own checker to the *CakeServerMonitor.commands* key as show
 
 To view current server stats: 
 
-`bin/cake server_monitor view`
+`bin/cake monitor view`
+
+## Credits
+
+This work is fork on the [code by watchowl](https://github.com/watchowl/cake-server-monitor).

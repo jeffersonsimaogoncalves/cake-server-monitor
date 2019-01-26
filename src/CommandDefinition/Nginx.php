@@ -6,10 +6,21 @@
  * Time: 8:15 PM
  */
 
-namespace WatchOwl\CakeServerMonitor\CommandDefinition;
+namespace JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition;
 
-
-class Nginx extends CommandDefinition
+/**
+ * Class Nginx
+ *
+ * Date: 26/01/2019 10:28
+ *
+ * Project: cakephp-server-monitor
+ *
+ * @author Jefferson Simão Gonçalves <gerson.simao.92@gmail.com>
+ *
+ * @package JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition
+ */
+class Nginx
+    extends CommandDefinition
 {
     public function resolve($output)
     {

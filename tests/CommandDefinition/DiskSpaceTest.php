@@ -6,9 +6,9 @@
  * Time: 8:14 PM
  */
 
-namespace WatchOwl\CakeServerMonitor\Test\CommandDefinition;
+namespace JeffersonSimaoGoncalves\CakeServerMonitor\Test\CommandDefinition;
 
-use WatchOwl\CakeServerMonitor\CommandDefinition\DiskSpace;
+use JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\DiskSpace;
 
 class DiskSpaceTest extends \PHPUnit_Framework_TestCase
 {

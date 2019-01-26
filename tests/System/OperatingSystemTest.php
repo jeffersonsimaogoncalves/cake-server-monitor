@@ -7,11 +7,11 @@
  * Time: 7:32 PM
  */
 
-namespace WatchOwl\CakeServerMonitor\Test\System;
+namespace JeffersonSimaoGoncalves\CakeServerMonitor\Test\System;
 
 
-use WatchOwl\CakeServerMonitor\CommandDefinition\CommandDefinition;
-use WatchOwl\CakeServerMonitor\System\OperatingSystem;
+use JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\CommandDefinition;
+use JeffersonSimaoGoncalves\CakeServerMonitor\System\OperatingSystem;
 
 class TestCommand extends CommandDefinition
 {
