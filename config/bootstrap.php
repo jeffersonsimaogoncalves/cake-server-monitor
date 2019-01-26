@@ -6,7 +6,7 @@ Configure::write('CakeServerMonitor.commands', [
     'disk_space' => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\DiskSpace',
     'mysql'      => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\MySql',
     'nginx'      => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\Nginx',
-    'php5fpm'    => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\Php5Fpm',
+    'php7fpm'    => 'JeffersonSimaoGoncalves\CakeServerMonitor\CommandDefinition\Php7Fpm',
 ]);
 
 Configure::write('CakeServerMonitor.email', [
