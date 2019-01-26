@@ -33,7 +33,7 @@ Email::setConfig([
     ],
 ]);
 
-Plugin::load('Watchowl/CakeServerMonitor', [
+Plugin::load('JeffersonSimaoGoncalves/CakeServerMonitor', [
     'bootstrap' => true,
     'path' => dirname(__DIR__) . DS
 ]);
