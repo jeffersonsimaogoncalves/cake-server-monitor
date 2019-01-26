@@ -5,7 +5,7 @@ CakePHP 3 Plugin for Monitoring Server Stats
 
 + To install the CakeServerMonitor plugin, you can use composer. From your application's ROOT directory (where composer.json file is located) run the following:
 
-    ```composer require jeffersonsimaogoncalves/cake-server-monitor```
+    ```composer require jeffersonsimaogoncalves/cakephp-server-monitor```
 
 + You will need to add the following line to your application's `config/bootstrap.php` file:
 
