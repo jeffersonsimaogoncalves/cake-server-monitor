@@ -1,1 +1,8 @@
-/vendor/
+CakePHP 3
+
+/vendor/*
+/config/app.php
+/tmp/*
+/logs/*
+/.idea/*
+/composer.lock
